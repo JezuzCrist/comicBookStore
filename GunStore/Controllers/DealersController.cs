@@ -30,7 +30,7 @@ namespace GunStore.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Dealer dealer = db.Dealers.Find(id);
+            Seller dealer = db.Dealers.Find(id);
             if (dealer == null)
             {
                 return HttpNotFound();
@@ -49,7 +49,7 @@ namespace GunStore.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,FirstName,LastName,City,Street,Reliability")] Dealer dealer)
+        public ActionResult Create([Bind(Include = "Id,FirstName,LastName,City,Street,Reliability")] Seller dealer)
         {
             if (ModelState.IsValid)
             {
@@ -68,7 +68,7 @@ namespace GunStore.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Dealer dealer = db.Dealers.Find(id);
+            Seller dealer = db.Dealers.Find(id);
             if (dealer == null)
             {
                 return HttpNotFound();
@@ -81,7 +81,7 @@ namespace GunStore.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,City,Street,Reliability")] Dealer dealer)
+        public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,City,Street,Reliability")] Seller dealer)
         {
             if (ModelState.IsValid)
             {
@@ -99,7 +99,7 @@ namespace GunStore.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Dealer dealer = db.Dealers.Find(id);
+            Seller dealer = db.Dealers.Find(id);
             if (dealer == null)
             {
                 return HttpNotFound();
@@ -112,7 +112,7 @@ namespace GunStore.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Dealer dealer = db.Dealers.Find(id);
+            Seller dealer = db.Dealers.Find(id);
             db.Dealers.Remove(dealer);
             db.SaveChanges();
             return RedirectToAction("Index");

@@ -7,7 +7,7 @@ using System.Web;
 
 namespace GunStore.Models
 {
-    public class Dealer
+    public class Seller
     {
         [Key]
         public int Id { get; set; }
@@ -23,7 +23,7 @@ namespace GunStore.Models
 
         public virtual List<Gun> Guns { get; set; }
 
-        public Dealer()
+        public Seller()
         {
         }
     }

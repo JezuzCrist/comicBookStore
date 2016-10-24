@@ -5,39 +5,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GunStore</title>
     <link rel="icon" href="@Url.Content("~/favicon.ico")" />
-    <link rel="stylesheet" href="~/Content/Site.css" type="text/css" media="screen" />
-    <link rel="stylesheet" href="~/Content/bootstrap.css" type="text/css" media="screen" />
+
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    
+    <link rel="stylesheet" href="~/Content/Site.css" type="text/css" media="screen" />
+
+
+    <link rel="stylesheet" href="~/Content/font-awesome-4.6.3/css/font-awesome.min.css" type="text/css" media="screen" />
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    
+    <link rel="stylesheet" href="~/Content/css/main.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="~/Content/bootstrap.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="~/Content/css/home.css" type="text/css" media="screen" />
+    
     <script src="@Url.Content("~/Scripts/jquery-1.10.2.js")"></script>
     <script src="@Url.Content("https://maps.googleapis.com/maps/api/js?key=AIzaSyDY_-Sbpc7dEyezG2jx_skos9uTQwGRnx8")"></script>
     @if (IsSectionDefined("Scripts"))
     {
-        @RenderSection("Scripts", false)
-    }
+    @RenderSection("Scripts", false)
+}
 </head>
 <body>
-    <div id="wrapper">
-        <div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a href="#" class="pull-left"><img src="@Url.Content("~/favicon.ico")"></a>
-                    @Html.ActionLink("GunStore", "Home", "Home", new { area = "" }, new { @class = "navbar-brand" })
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li>@Html.ActionLink("Guns", "Search", "Guns")</li>
-                        <li>@Html.ActionLink("Dealers", "Search", "Dealers")</li>
-                        @if (Request.IsAuthenticated)
-                        {
-                            <li>@Html.ActionLink("Manage Guns", "Index", "Guns")</li>
+
+    <div class="main">
+        <div>
+            <div class="navbar navbar-inverse navbar-fixed-top mainNavbar">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a href="#" class="pull-left">
+                            <i id="storeLogo" class="fa fa-book" aria-hidden="true"></i>
+                        </a>
+                        @Html.ActionLink("ComicBookStore", "Home", "Home", new { area = "" }, new { @class = "navbar-brand storeLogoText" })
+                    </div>
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav storeNav">
+                            <li>@Html.ActionLink("Comics", "Search", "Guns")</li>
+                            <li>@Html.ActionLink("Sellers", "Search", "Dealers")</li>
+                            @if (Request.IsAuthenticated)
+                            {
+                            <li>@Html.ActionLink("Manage Comics", "Index", "Guns")</li>
                             <li>@Html.ActionLink("Manage Reviews", "Index", "Reviews")</li>
-                            <li>@Html.ActionLink("Manage Dealers", "Index", "Dealers")</li>
+                            <li>@Html.ActionLink("Manage Sellers", "Index", "Dealers")</li>
                         }
                         <li>@Html.ActionLink("Contact", "Index", "Map")</li>
                     </ul>
@@ -52,7 +67,6 @@
             <h3>&copy; @DateTime.Now.Year - GunStore</h3>
         </footer>
     </div>
-    @Scripts.Render("~/bundles/bootstrap")
 
 </body>
 </html>

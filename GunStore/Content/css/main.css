@@ -1,0 +1,34 @@
+html, body{
+	margin: 0 0;
+	padding: 0;
+}
+.main{
+	position: relative;
+	background-color: #343436;
+	padding-top: 75px;
+	color: rgb(227, 223, 212);
+}
+#storeLogo{
+	font-size: 4em;
+	color: #ffd94f !important;
+}
+.mainNavbar{
+	font-family: 'Raleway', sans-serif;
+	padding: 10px;
+	background-color: #403f3f !Important;
+}
+.storeLogoText{
+	line-height: inherit !Important;
+	font-weight: bold;
+	line-height: inherit !Important;
+	font-weight: bold !important;
+	color: #ffd94f !important;
+}
+.storeNav {
+	padding-top: 4px;
+}
+.storeNav li a{
+	color: rgb(227, 223, 212) !important;
+	font-weight: bold;
+	font-size: 15px;
+}

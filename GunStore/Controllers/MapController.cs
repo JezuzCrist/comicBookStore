@@ -28,7 +28,7 @@ namespace GunStore.Controllers
             return JsonConvert.SerializeObject(addresses);
         }
 
-        private static string ReformatDealerAddress(Dealer dealer)
+        private static string ReformatDealerAddress(Seller dealer)
         {
             return dealer.City + ", " + dealer.Street;
         }
