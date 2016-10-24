@@ -4,6 +4,7 @@ GunStore/obj/*
 GunStore/obj/
 GunStore\obj\
 \GunStore\obj\
+GunStore/App_Data/*
 
 GunStore/bin
 GunStore/bin/*
@@ -11,4 +12,4 @@ GunStore/bin/*
 GunStore/bin/
 GunStore\bin\
 \GunStore\bin\
-
+GunStore\App_Data\*

@@ -53,37 +53,37 @@
 </div>
 <br />
 <div class="guns">
-    @foreach (var gun in ViewBag.Guns)
+    @foreach (var comics in ViewBag.Comics)
     {
         <section id="gun-details">
             <table>
                 <tr>
                     <td class="max-width">
                         <h2 class="header-color">
-                            @gun.Name
+                            @comics.Name
                         </h2>
                         <article class="gun-article">
-                            @gun.Description
+                            @comics.Description
                         </article>
                         <br />
                         <b>
                             Price:
                         </b>
-                        USD $@gun.Price
+                        USD $@comics.Price
                         <br />
                         <b>
                             Ammo type:
                         </b>
-                        @gun.Genre
+                        @comics.Genre
                     </td>
                     <td>
-                        @if (gun.IsPhotoExists)
+                        @if (comics.IsPhotoExists)
                         {
-                            <img src="@("/Uploads/" + @gun.Id + ".png")" alt="No image" />
+                            <img src="@("/Uploads/" + @comics.Id + ".png")" alt="No image" />
                         }
                         else
                         {
-                            <canvas id="@gun.Name" class="noImage" width="200" height="100" style="border:1px solid #000000;">
+                            <canvas id="@comics.Name" class="noImage" width="200" height="100" style="border:1px solid #000000;">
                                 No Image
                             </canvas>
                         }
@@ -92,20 +92,20 @@
             </table>
             <hr style="border-top: dotted 1px;" />
             <h3>
-                @if (gun.Reviews.Count <= 0)
+                @if (comics.Reviews.Count <= 0)
                 {
                     @("No comments")
                 }
                 else
                 {
-                    @(gun.Reviews.Count + " comments:")
+                    @(comics.Reviews.Count + " comments:")
                 }
             </h3>
             <section class="comments">
                 <table>
-                    @for (int l_iRevIndex = 0; l_iRevIndex < gun.Reviews.Count; l_iRevIndex++)
+                    @for (int l_iRevIndex = 0; l_iRevIndex < comics.Reviews.Count; l_iRevIndex++)
                     {
-                        GunStore.Models.Review currReview = gun.Reviews[l_iRevIndex];
+                        GunStore.Models.Review currReview = comics.Reviews[l_iRevIndex];
                         <tr>
                             <th>
                                 <div class="review-number">@(l_iRevIndex + 1)</div>
@@ -132,7 +132,7 @@
             </section>
             <div class="row">
                 <div class="col-md-10">
-                    @using (Html.BeginForm("AddReview", "Guns", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                    @using (Html.BeginForm("AddReview", "Comics", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
                     {
                         <h3 class="add-comment-header header-color">Post a Comment</h3>
 
@@ -164,7 +164,7 @@
                                 </div>
                             </div>
 
-                            <input type="hidden" id="gunId" name="gunId" value="@gun.Id" />
+                            <input type="hidden" id="gunId" name="gunId" value="@comics.Id" />
 
                             <div class="form-group">
                                 <div class="col-md-offset-2 col-md-10">
