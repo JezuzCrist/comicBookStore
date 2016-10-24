@@ -11,14 +11,14 @@ using System.IO;
 
 namespace GunStore.Controllers
 {
-    public class GunsController : Controller
+    public class ComicsController : Controller
     {
         private ComicsContextDb db = new ComicsContextDb();
 
         // GET: Guns
         public ActionResult Index()
         {
-            var guns = db.Guns.Include(g => g.Dealer);
+            var guns = db.Guns.Include(g => g.Seller);
             return View(guns.ToList());
         }
 
@@ -29,7 +29,7 @@ namespace GunStore.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Gun gun = db.Guns.Find(id);
+            Comics gun = db.Guns.Find(id);
             if (gun == null)
             {
                 return HttpNotFound();
@@ -49,7 +49,7 @@ namespace GunStore.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,SellerId,Name,Description,Price,Genre")] Gun gun, HttpPostedFileBase file)
+        public ActionResult Create([Bind(Include = "Id,SellerId,Name,Description,Price,Genre")] Comics gun, HttpPostedFileBase file)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +78,7 @@ namespace GunStore.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Gun gun = db.Guns.Find(id);
+            Comics gun = db.Guns.Find(id);
             if (gun == null)
             {
                 return HttpNotFound();
@@ -92,7 +92,7 @@ namespace GunStore.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,SellerId,Name,Description,Price,Genre,IsPhotoExists")] Gun gun, HttpPostedFileBase file)
+        public ActionResult Edit([Bind(Include = "Id,SellerId,Name,Description,Price,Genre,IsPhotoExists")] Comics gun, HttpPostedFileBase file)
         {
             if (ModelState.IsValid)
             {
@@ -129,7 +129,7 @@ namespace GunStore.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Gun gun = db.Guns.Find(id);
+            Comics gun = db.Guns.Find(id);
             if (gun == null)
             {
                 return HttpNotFound();
@@ -142,7 +142,7 @@ namespace GunStore.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Gun gun = db.Guns.Find(id);
+            Comics gun = db.Guns.Find(id);
 
             if (gun.IsPhotoExists)
             {
@@ -199,11 +199,11 @@ namespace GunStore.Controllers
             {
                 Review newReview = new Review
                 {
-                    GunRank = GunRank,
+                    ComicsRank = GunRank,
                     Title = reviewTitle,
                     Author = reviewAuthor,
                     Content = reviewContent,
-                    GunID = int.Parse(gunId),
+                    ComicsID = int.Parse(gunId),
                     PublicityDate = DateTime.Now
                 };
 

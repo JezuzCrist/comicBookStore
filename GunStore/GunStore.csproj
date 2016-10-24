@@ -205,7 +205,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Seller.cs" />
-    <Compile Include="Models\Gun.cs" />
+    <Compile Include="Models\Comics.cs" />
     <Compile Include="Models\GunsContextDb.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
@@ -316,12 +316,12 @@
     <Content Include="Views\Dealers\Edit.cshtml" />
     <Content Include="Views\Dealers\Index.cshtml" />
     <Content Include="Views\Dealers\Search.cshtml" />
-    <Content Include="Views\Guns\Create.cshtml" />
-    <Content Include="Views\Guns\Delete.cshtml" />
-    <Content Include="Views\Guns\Details.cshtml" />
-    <Content Include="Views\Guns\Edit.cshtml" />
-    <Content Include="Views\Guns\Index.cshtml" />
-    <Content Include="Views\Guns\Search.cshtml" />
+    <Content Include="Views\Comics\Create.cshtml" />
+    <Content Include="Views\Comics\Delete.cshtml" />
+    <Content Include="Views\Comics\Details.cshtml" />
+    <Content Include="Views\Comics\Edit.cshtml" />
+    <Content Include="Views\Comics\Index.cshtml" />
+    <Content Include="Views\Comics\Search.cshtml" />
     <Content Include="Views\Map\MapView.cshtml" />
     <Content Include="Views\Reviews\Create.cshtml" />
     <Content Include="Views\Reviews\Delete.cshtml" />
