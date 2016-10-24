@@ -1,0 +1,37 @@
+﻿@model GunStore.Controllers.Song
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="content">
+    <div id="mainContent">
+        <h1>Guns Trade Center</h1>
+        <p>Here you can shop for guns!</p><br />
+        <section id="homeMain">
+            <article>
+                <section>
+                    <img src="~/Content/Guns-Home.jpg" width="800" />
+                </section>
+            </article>
+            <article class="caution">
+                <p>
+                    <h3>CAUTION!</h3>
+                    Guns are very dangerous, here are some exmaples to be aware from
+                </p>
+                <p>
+                    <video controls>
+                        <source src="~/Videos/GunFails.mp4" type="video/mp4" />
+                        Your browser does not support HTML5 video.
+                    </video>
+                </p>
+            </article>
+        </section>
+    </div>
+    <aside>
+        <h4>iTunes guns song of the moment:</h4>
+        <h5>@Html.DisplayFor(model => model.Name)</h5>
+        <h5>@Html.DisplayFor(model => model.ArtistsName)</h5>
+        <h5>@Html.DisplayFor(model => model.AlbumName)</h5>
+    </aside>
+</div>

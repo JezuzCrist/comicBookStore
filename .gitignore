@@ -1,0 +1,14 @@
+GunStore/obj
+GunStore/obj/*
+/GunStore/obj/*
+GunStore/obj/
+GunStore\obj\
+\GunStore\obj\
+
+GunStore/bin
+GunStore/bin/*
+/GunStore/bin/*
+GunStore/bin/
+GunStore\bin\
+\GunStore\bin\
+

@@ -1,0 +1,183 @@
+﻿@model GunStore.Models.Review
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Scripts/CanvasMagic.js"></script>
+<div class="filter">
+    <header>
+        <h3>Filters</h3>
+    </header>
+    <div class="row">
+        <div class="col-md-11">
+            <section id="filter-gun">
+                @using (Html.BeginForm("Search", "Guns", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
+                    <div class="form-group">
+                        <label class="col-md-6 control-label" for="gunName">Gun name:</label>
+                        <div class="col-md-6">
+                            <input class="form-control" name="gunName" id="gunName" type="text" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-6 control-label" for="minPrice">Minimum price:</label>
+                        <div class="col-md-6">
+                            <input class="form-control" name="minPrice" id="minPrice" type="number" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-6 control-label" for="maxPrice">Maximum price:</label>
+                        <div class="col-md-6">
+                            <input class="form-control" name="maxPrice" id="maxPrice" type="number" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-6 control-label" for="gener">Ammo type:</label>
+                        <div class="col-md-6">
+                            <input class="form-control" name="gener" id="gener" type="text" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-6 col-md-6">
+                            <input class="btn btn-default" type="submit" value="filter" />
+                        </div>
+                    </div>
+                }
+            </section>
+        </div>
+    </div>
+</div>
+<br />
+<div class="guns">
+    @foreach (var gun in ViewBag.Guns)
+    {
+        <section id="gun-details">
+            <table>
+                <tr>
+                    <td class="max-width">
+                        <h2 class="header-color">
+                            @gun.Name
+                        </h2>
+                        <article class="gun-article">
+                            @gun.Description
+                        </article>
+                        <br />
+                        <b>
+                            Price:
+                        </b>
+                        USD $@gun.Price
+                        <br />
+                        <b>
+                            Ammo type:
+                        </b>
+                        @gun.Genre
+                    </td>
+                    <td>
+                        @if (gun.IsPhotoExists)
+                        {
+                            <img src="@("/Uploads/" + @gun.Id + ".png")" alt="No image" />
+                        }
+                        else
+                        {
+                            <canvas id="@gun.Name" class="noImage" width="200" height="100" style="border:1px solid #000000;">
+                                No Image
+                            </canvas>
+                        }
+                    </td>
+                </tr>
+            </table>
+            <hr style="border-top: dotted 1px;" />
+            <h3>
+                @if (gun.Reviews.Count <= 0)
+                {
+                    @("No comments")
+                }
+                else
+                {
+                    @(gun.Reviews.Count + " comments:")
+                }
+            </h3>
+            <section class="comments">
+                <table>
+                    @for (int l_iRevIndex = 0; l_iRevIndex < gun.Reviews.Count; l_iRevIndex++)
+                    {
+                        GunStore.Models.Review currReview = gun.Reviews[l_iRevIndex];
+                        <tr>
+                            <th>
+                                <div class="review-number">@(l_iRevIndex + 1)</div>
+                                <h4 class="review-title header-color">@currReview.Title</h4>
+                            </th>
+                            <th>
+                                @currReview.GunRank
+                            </th>
+                        </tr>
+
+                            <tr>
+                                <td>
+                                    <i class="review-auth-details">@currReview.Author | <time datetime="@currReview.PublicityDate">@currReview.PublicityDate</time></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="max-width">
+                                    @currReview.Content
+                                    <hr />
+                                </td>
+                            </tr>
+                    }
+                </table>
+            </section>
+            <div class="row">
+                <div class="col-md-10">
+                    @using (Html.BeginForm("AddReview", "Guns", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                    {
+                        <h3 class="add-comment-header header-color">Post a Comment</h3>
+
+                            <div class="form-group">
+                                <label class="col-md-2 control-label" for="GunRank">Gun rank:</label>
+                                <div class="col-md-9">
+                                    @Html.EnumDropDownListFor(model => model.GunRank, new { @class = "form-control" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-2 control-label" for="reviewTitle">Title:</label>
+                                <div class="col-md-9">
+                                    <input type="text" name="reviewTitle" id="reviewTitle" required />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-2 control-label" for="reviewAuthor">Author:</label>
+                                <div class="col-md-9">
+                                    <input type="text" name="reviewAuthor" id="reviewAuthor" required />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-2 control-label" for="reviewContent">Content:</label>
+                                <div class="col-md-9">
+                                    <textarea name="reviewContent" id="reviewContent" required></textarea>
+                                </div>
+                            </div>
+
+                            <input type="hidden" id="gunId" name="gunId" value="@gun.Id" />
+
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input class="btn btn-default" type="submit" value="Post" />
+                                </div>
+                            </div>
+                    }
+                </div>
+            </div>
+        </section>
+    }
+</div>
+<br /><br />
+<p>
+    <input class="btn btn-default" type="submit" id="canvasMagic" value="Magic!" />
+</p>

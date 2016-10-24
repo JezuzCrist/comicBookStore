@@ -1,0 +1,116 @@
+﻿@model IEnumerable<GunStore.Models.Dealer>
+<div class="dealers-filter">
+    <header>
+        <h3>Filters</h3>
+    </header>
+    <div class="row">
+        <div class="col-md-11">
+            <section id="filterBox">
+                @using (Html.BeginForm("Search", "Dealers", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
+                    <div class="form-group">
+                        <label class="col-md-2 control-label" for="@Html.DisplayNameFor(model => model.FirstName)">@Html.DisplayNameFor(model => model.FirstName):</label>
+                        <div class="col-md-6">
+                            <input class="form-control" name="firstName" id="firstName" type="text" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-2 control-label" for="@Html.DisplayNameFor(model => model.LastName)">@Html.DisplayNameFor(model => model.LastName):</label>
+                        <div class="col-md-6">
+                            <input class="form-control" name="lastName" id="lastName" type="text" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-2 control-label" for="@Html.DisplayNameFor(model => model.City)">@Html.DisplayNameFor(model => model.City):</label>
+                        <div class="col-md-6">
+                            <input class="form-control" name="city" id="city" type="text" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-6">
+                            <input class="btn btn-default" type="submit" value="filter" />
+                        </div>
+                    </div>
+                }
+            </section>
+        </div>
+    </div>
+</div>
+
+<div class="dealers-distribution">
+    <header>
+        <h4>Distribution Based On Dealer's Reliability &nbsp;&nbsp;<input class="btn btn-default" type="button" value="Show" id="groupByBtn" onclick="showReliabilityGroupBy(this)" /></h4>
+    </header>
+    <section id="groupByReliabilitySection">
+        <table id="dealersReliabilityTable">
+            <thead>
+                <tr>
+                    <th>
+                        <b>Reliability</b>
+                    </th>
+                    <th>
+                        <b style="margin-left: 80px;">Dealers</b>
+                    </th>
+                </tr>
+            </thead>
+            <tbody id="groupByListTBody"></tbody>
+        </table>
+    </section>
+</div>
+<article id="showDealers">
+    <div class="filtered-dealers">
+        @foreach (var dealer in Model)
+        {
+            <section id="filteredListItem">
+                <h3>@dealer.FirstName @dealer.LastName</h3>
+                <p>
+                    @for (int i = 0; i < dealer.Reliability; i++)
+                    {
+                        @Html.Raw("&#9733;")
+                    }
+                    @for (int i = dealer.Reliability; i < 10; i++)
+                    {
+                        @Html.Raw("&#9734;")
+                    }
+
+                    @(" (" + dealer.Reliability + "/10)")
+                </p>
+                <p>@dealer.Street, @dealer.City </p>
+                <hr />
+                @foreach (var gun in dealer.Guns)
+                {
+                    @Html.Partial("_GunDetails", gun)
+                    <br />
+                }
+            </section>
+        }
+    </div>
+</article>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#groupByReliabilitySection').hide();
+    });
+
+    function showReliabilityGroupBy(inputBtn) {
+        if ($(inputBtn).val() === 'Show') {
+            $(inputBtn).val('Hide');
+
+            $.getJSON('@Url.Action("GroupByReliability", "Dealers")')
+                .success(function (listOfGroupedByDealers) {
+                    for (var i = 0; i < listOfGroupedByDealers.length; i++) {
+                        var groupedByItem = listOfGroupedByDealers[i];
+                        $('#groupByListTBody').append("<tr><td>" + groupedByItem.Reliability + "</td><td>" + groupedByItem.Dealers + "</td></tr>");
+                        console.log(groupedByItem);
+                    }
+                });
+            $('#groupByReliabilitySection').show();
+        } else {
+            $('#groupByListTBody').empty();
+            $(inputBtn).val('Show');
+            $('#groupByReliabilitySection').hide();
+        }
+    }
+</script>

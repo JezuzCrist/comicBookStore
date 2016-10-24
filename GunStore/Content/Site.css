@@ -1,0 +1,294 @@
+﻿@font-face {
+   font-family: customFont;
+   src: url(GoodDog.otf);
+}
+
+header, footer, section, aside, nav, article {
+	display: block;
+}
+
+html, body {
+    margin:0;
+	padding-bottom: 0;
+	height:100%;
+    padding-top: 60px;
+    background: #FEFEFE;
+}
+
+.navbar-fixed-top,
+.navbar-fixed-bottom {
+    -webkit-box-shadow: 0px 2px 5px -1px #888888;
+    -ms-box-shadow: 0px 2px 5px -1px #888888;
+    box-shadow: 0px 2px 5px -1px #888888;
+}
+
+#wrapper {
+	min-height:100%;
+    position: relative;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-bottom:300px;
+}
+
+.line-separator{
+    height:1px;
+    background:#717171;
+    border-bottom:1px solid #313030;
+}
+
+#filterBox {
+    text-align: left;
+}
+
+#showDealers {
+    text-align: center;
+}
+
+#dealersReliabilityTable {
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.filtered-dealers {
+    text-align: left;
+}
+
+.dealers-distribution,
+.dealers-filter, 
+.filter {
+    margin-left: -370px;
+    padding: 10px 10px;
+	width: 330px;
+	background-color: #FAFAFA;
+	-webkit-box-shadow: 0px 1px 5px -1px #888888;
+    -ms-box-shadow: 0px 1px 5px -1px #888888;
+    box-shadow: 0px 1px 5px -1px #888888;
+}
+
+.dealers-distribution,
+.dealers-filter {
+    margin-left: 0;
+	width: 100%;
+}
+
+.dealers-distribution {
+    margin-top: 15px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+/*------------------------------
+=FOOTER
+------------------------------*/
+footer {
+	position: absolute;
+	left: 0;
+    bottom: 0;
+	width: 100%;
+	background: #222;
+    text-align: center;
+    height: 50px;
+}
+
+	footer div {
+		display: table;
+		margin: 0 auto;
+		padding: 44px 0;
+		width: 940px;
+		color: #777;
+	}
+	
+		footer div section {
+			display: table-cell;
+			width: 300px;
+		}
+		
+		footer div #about, footer div #blogroll {
+			padding-right: 20px;
+		}
+		
+	footer h3 {
+		color: #FFF;
+		margin :0;
+		margin-top: 13px;
+	}
+	
+	footer a {
+		color: #999;
+	}
+	
+		footer a:hover {
+			color: #FFF;
+			text-decoration: none;
+		}
+	
+	footer ul {
+		margin: 0 0 0 40px;
+		list-style: square;
+		color: #565656;
+	}
+	
+		footer ul li a {
+			display: block;
+		}
+
+/*------------------------------
+=HEADER
+------------------------------*/
+
+header h3 {
+	text-shadow: 3px 3px #DDDDDD;
+}
+
+/*------------------------------
+=INPUTS
+------------------------------*/
+
+input[type=text] {
+    padding:5px;
+    border:2px solid #ccc; 
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+
+input[type=text]:focus {
+    border-color:#333;
+}
+
+input[type=submit] {
+    padding:5px 15px;
+    background:#ccc;
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+
+/*------------------------------
+=GUNSPAGE
+------------------------------*/
+
+.guns {
+	margin-top:-351px;
+}
+
+#gun-details {
+    background-color: #FAFAFA;
+    padding: 10px 20px;
+    margin-top: 15px;
+    -webkit-box-shadow: 0px 1px 5px -1px #888888;
+    -ms-box-shadow: 0px 1px 5px -1px #888888;
+    box-shadow: 0px 1px 5px -1px #888888;
+}
+
+#gun-details img {
+    -webkit-transition: -webkit-transform 2s; /* Safari */
+    transition: transform 2s;
+    height: 100px;
+    width: 200px;
+}
+
+#gun-details img:hover {
+    transform: scale(2, 2);
+}
+
+.comments {
+    margin-left: 60px;
+}
+
+.gun-article {
+    -webkit-column-count: 2; /* Chrome, Safari, Opera */
+    -moz-column-count: 2; /* Firefox */
+    column-count: 2;
+    -webkit-column-rule-style: solid; /* Chrome, Safari, Opera */
+    -moz-column-rule-style: solid; /* Firefox */
+    column-rule-style: solid;
+    -webkit-column-rule-width: 1px; /* Chrome, Safari, Opera */
+    -moz-column-rule-width: 1px; /* Firefox */
+    column-rule-width: 1px;
+    -webkit-column-rule-color: lightblue; /* Chrome, Safari, Opera */
+    -moz-column-rule-color: lightblue; /* Firefox */
+    column-rule-color: lightblue;
+    font-family: customFont;
+    font-size: 20px;
+}
+
+.comments .review-number {
+    float: left; 
+    margin-left: -40px; 
+    font-size:22px; 
+    display: block; 
+    color: #959595;
+}
+
+.comments .review-title {
+    margin-bottom: 0; 
+    margin-top: 8px; 
+    font-weight: bold;
+}
+
+.comments .review-auth-details {
+    color: #999999;
+}
+
+.add-comment-header {
+    margin-left: 60px;
+}
+
+#reviewContent {
+    width: 600px;
+	height: 120px;
+	border: 3px solid #cccccc;
+	padding: 5px;
+	font-family: Tahoma, sans-serif;
+	background-position: bottom right;
+	background-repeat: no-repeat;
+}
+
+.header-color {
+    color: #055CA4;
+}
+
+.max-width {
+    width: 100%;
+}
+
+/*------------------------------
+=HOME
+------------------------------*/
+
+.caution h3 {
+    color: red;
+}
+
+aside {
+	margin: 22px 0 0 22px;
+	padding: 11px 22px;
+	background: linear-gradient(#BABABA, #EBEBEB);
+	
+	/* Border-radius not implemented yet */
+	-moz-border-radius: 11px;
+	-webkit-border-radius: 11px;
+}
+
+#content {
+	display: table;
+}
+
+	#mainContent {
+		display: table-cell;
+		width: 620px;
+		padding-right: 22px;
+	}
+	
+	aside {
+		display: table-cell;
+		width: 300px;
+	}

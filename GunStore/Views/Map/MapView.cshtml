@@ -1,0 +1,50 @@
+﻿<h2>MapView</h2>
+<div id="map" style="width:800px; height:500px"></div>
+@section Scripts
+{
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDY_-Sbpc7dEyezG2jx_skos9uTQwGRnx8&callback=initMap"></script>
+}
+<script type="text/javascript">
+    var map;
+    var geocoder;
+    function initMap() {
+        map = new google.maps.Map(document.getElementById("map"), {
+            center: { lat: 31.682216, lng: 34.956404 },
+            zoom: 7
+        });
+        geocoder = new google.maps.Geocoder();
+
+        $.getJSON('@Url.Action("GetAllDealersAddresses", "Map")')
+            .success(function (addresses) {
+                markMapWithDealerAddresses(addresses);
+            });
+    }
+
+    initMap();
+
+    function addMarker(location, map) {
+        var marker = new google.maps.Marker({
+            position: location,
+            label: 'D',
+            map: map
+        });
+    }
+
+    function geocodeAddress(geocoder, map, address) {
+        geocoder.geocode({ 'address': address }, function (results, status) {
+            if (status === google.maps.GeocoderStatus.OK) {
+                addMarker(results[0].geometry.location, map);
+            } else {
+                console.log('Geocode was not successful for the following reason: ' + status);
+            }
+        });
+    }
+
+    function markMapWithDealerAddresses(addresses) {
+        for (var i = 0; i < addresses.length; i++) {
+            var address = addresses[i];
+            geocodeAddress(geocoder, map, address);
+        }
+    }
+
+</script>
