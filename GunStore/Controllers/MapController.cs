@@ -22,7 +22,7 @@ namespace GunStore.Controllers
             List<string> addresses = new List<string>();
             using (ComicsContextDb db = new ComicsContextDb())
             {
-                db.Dealers.ForEach(dealer => addresses.Add(ReformatDealerAddress(dealer)));
+                db.Sellers.ForEach(dealer => addresses.Add(ReformatDealerAddress(dealer)));
             }
 
             return JsonConvert.SerializeObject(addresses);

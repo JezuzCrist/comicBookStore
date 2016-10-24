@@ -47,12 +47,12 @@
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav storeNav">
                             <li>@Html.ActionLink("Comics", "Search", "Comics")</li>
-                            <li>@Html.ActionLink("Sellers", "Search", "Dealers")</li>
+                            <li>@Html.ActionLink("Sellers", "Search", "Sellers")</li>
                             @if (Request.IsAuthenticated)
                             {
                             <li>@Html.ActionLink("Manage Comics", "Index", "Comics")</li>
                             <li>@Html.ActionLink("Manage Reviews", "Index", "Reviews")</li>
-                            <li>@Html.ActionLink("Manage Sellers", "Index", "Dealers")</li>
+                            <li>@Html.ActionLink("Manage Sellers", "Index", "Sellers")</li>
                         }
                         <li>@Html.ActionLink("Contact", "Index", "Map")</li>
                     </ul>

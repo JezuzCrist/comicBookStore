@@ -20,9 +20,9 @@ namespace GunStore
             );
 
             routes.MapRoute(
-                name: "Dealers",
+                name: "Sellers",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Dealers", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Sellers", action = "Index", id = UrlParameter.Optional }
             );
         }
     }
