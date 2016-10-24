@@ -11,13 +11,12 @@
     @Scripts.Render("~/bundles/bootstrap")
     
     <link rel="stylesheet" href="~/Content/Site.css" type="text/css" media="screen" />
-
+    <link rel="stylesheet" href="~/Content/bootstrap.css" type="text/css" media="screen" />
 
     <link rel="stylesheet" href="~/Content/font-awesome-4.6.3/css/font-awesome.min.css" type="text/css" media="screen" />
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
     
     <link rel="stylesheet" href="~/Content/css/main.css" type="text/css" media="screen" />
-    <link rel="stylesheet" href="~/Content/bootstrap.css" type="text/css" media="screen" />
     <link rel="stylesheet" href="~/Content/css/home.css" type="text/css" media="screen" />
     
     <script src="@Url.Content("~/Scripts/jquery-1.10.2.js")"></script>
@@ -66,7 +65,7 @@
         <footer>
             <h3>&copy; @DateTime.Now.Year - ComicBookStore</h3>
             <nav>
-            <a>@Html.ActionLink("Comics", "Search", "Guns")</a>
+                <a>@Html.ActionLink("Comics", "Search", "Guns")</a>
                 <a>@Html.ActionLink("Sellers", "Search", "Dealers")</a>
                 @if (Request.IsAuthenticated)
                 {

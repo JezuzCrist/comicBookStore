@@ -11,6 +11,12 @@
 	color: #848484;
 	margin-top: -14px;
 }
+.siteStatistics h3{
+	color: #6ac4f9;
+	background-color: #414144;
+	padding: 10px;
+	font-weight: bold;
+}
 
 .brakingNews h3{
 	color: #f96a6a;
