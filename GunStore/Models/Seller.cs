@@ -21,7 +21,7 @@ namespace GunStore.Models
         public string Street { get; set; }
         public int Reliability { get; set; }
 
-        public virtual List<Gun> Guns { get; set; }
+        public virtual List<Comics> Guns { get; set; }
 
         public Seller()
         {

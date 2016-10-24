@@ -7,7 +7,7 @@ using System.Web;
 
 namespace GunStore.Models
 {
-    public class Gun
+    public class Comics
     {
         [Key]
         public int Id { get; set; }
@@ -25,9 +25,9 @@ namespace GunStore.Models
         public string Genre { get; set; }
         public bool IsPhotoExists { get; set; }
         public virtual List<Review> Reviews { get; set; }
-        public Seller Dealer { get; set; }
+        public Seller Seller { get; set; }
 
-        public Gun()
+        public Comics()
         {
         }
     }

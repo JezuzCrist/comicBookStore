@@ -112,7 +112,7 @@
                                 <h4 class="review-title header-color">@currReview.Title</h4>
                             </th>
                             <th>
-                                @currReview.GunRank
+                                @currReview.ComicsRank
                             </th>
                         </tr>
 
@@ -139,7 +139,7 @@
                             <div class="form-group">
                                 <label class="col-md-2 control-label" for="GunRank">Gun rank:</label>
                                 <div class="col-md-9">
-                                    @Html.EnumDropDownListFor(model => model.GunRank, new { @class = "form-control" })
+                                    @Html.EnumDropDownListFor(model => model.ComicsRank, new { @class = "form-control" })
                                 </div>
                             </div>
 

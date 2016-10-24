@@ -12,13 +12,13 @@ namespace GunStore.Models
         [Key]
         public int Id { get; set; }
 
-        [DisplayName("Gun")]
-        public int GunID { get; set; }
-        public Rank GunRank { get; set; }
+        [DisplayName("Comics")]
+        public int ComicsID { get; set; }
+        public Rank ComicsRank { get; set; }
         public string Title { get; set; }
         public string Author { get; set; }
         public string Content { get; set; }
-        public Gun Gun { get; set; }
+        public Comics Comics { get; set; }
         public DateTime PublicityDate { get; set; }
 
         public enum Rank

@@ -18,7 +18,7 @@ namespace GunStore.Controllers
         // GET: Reviews
         public ActionResult Index()
         {
-            var reviews = db.Reviews.Include(r => r.Gun);
+            var reviews = db.Reviews.Include(r => r.Comics);
             return View(reviews.ToList());
         }
 
@@ -49,7 +49,7 @@ namespace GunStore.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,GunID,GunRank,Title,Author,Content,PublicityDate")] Review review)
+        public ActionResult Create([Bind(Include = "Id,ComicsID,ComicsRank,Title,Author,Content,PublicityDate")] Review review)
         {
             if (ModelState.IsValid)
             {
@@ -58,7 +58,7 @@ namespace GunStore.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.GunID = new SelectList(db.Guns, "Id", "Name", review.GunID);
+            ViewBag.GunID = new SelectList(db.Guns, "Id", "Name", review.ComicsID);
             return View(review);
         }
 
@@ -74,7 +74,7 @@ namespace GunStore.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.GunID = new SelectList(db.Guns, "Id", "Name", review.GunID);
+            ViewBag.GunID = new SelectList(db.Guns, "Id", "Name", review.ComicsID);
             return View(review);
         }
 
@@ -83,7 +83,7 @@ namespace GunStore.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,GunID,GunRank,Title,Author,Content,PublicityDate")] Review review)
+        public ActionResult Edit([Bind(Include = "Id,ComicsID,ComicsRank,Title,Author,Content,PublicityDate")] Review review)
         {
             if (ModelState.IsValid)
             {
@@ -91,7 +91,7 @@ namespace GunStore.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.GunID = new SelectList(db.Guns, "Id", "Name", review.GunID);
+            ViewBag.GunID = new SelectList(db.Guns, "Id", "Name", review.ComicsID);
             return View(review);
         }
 
