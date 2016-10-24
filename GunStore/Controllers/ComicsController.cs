@@ -15,51 +15,51 @@ namespace GunStore.Controllers
     {
         private ComicsContextDb db = new ComicsContextDb();
 
-        // GET: Guns
+        // GET: Comics
         public ActionResult Index()
         {
-            var guns = db.Comics.Include(g => g.Seller);
-            return View(guns.ToList());
+            var comics = db.Comics.Include(g => g.Seller);
+            return View(comics.ToList());
         }
 
-        // GET: Guns/Details/5
+        // GET: Comics/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Comics gun = db.Comics.Find(id);
-            if (gun == null)
+            Comics comics = db.Comics.Find(id);
+            if (comics == null)
             {
                 return HttpNotFound();
             }
-            return View(gun);
+            return View(comics);
         }
 
-        // GET: Guns/Create
+        // GET: Comics/Create
         public ActionResult Create()
         {
             ViewBag.SellerId = new SelectList(db.Sellers, "Id", "FirstName");
             return View();
         }
 
-        // POST: Guns/Create
+        // POST: Comics/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,SellerId,Name,Description,Price,Genre")] Comics gun, HttpPostedFileBase file)
+        public ActionResult Create([Bind(Include = "Id,SellerId,Name,Description,Price,Genre")] Comics comics, HttpPostedFileBase file)
         {
             if (ModelState.IsValid)
             {
-                gun.IsPhotoExists = file != null && file.ContentLength > 0;
-                db.Comics.Add(gun);
+                comics.IsPhotoExists = file != null && file.ContentLength > 0;
+                db.Comics.Add(comics);
                 db.SaveChanges();
 
-                if (gun.IsPhotoExists)
+                if (comics.IsPhotoExists)
                 {
-                    string fileName = gun.Id + ".png";
+                    string fileName = comics.Id + ".png";
                     string newImage = Path.Combine(Server.MapPath("/Uploads"), fileName);
                     file.SaveAs(newImage);
                 }
@@ -67,91 +67,91 @@ namespace GunStore.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.SellerId = new SelectList(db.Sellers, "Id", "FirstName", gun.SellerId);
-            return View(gun);
+            ViewBag.SellerId = new SelectList(db.Sellers, "Id", "FirstName", comics.SellerId);
+            return View(comics);
         }
 
-        // GET: Guns/Edit/5
+        // GET: Comics/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Comics gun = db.Comics.Find(id);
-            if (gun == null)
+            Comics comics = db.Comics.Find(id);
+            if (comics == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.SellerId = new SelectList(db.Sellers, "Id", "FirstName", gun.SellerId);
-            return View(gun);
+            ViewBag.SellerId = new SelectList(db.Sellers, "Id", "FirstName", comics.SellerId);
+            return View(comics);
         }
 
-        // POST: Guns/Edit/5
+        // POST: Comics/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,SellerId,Name,Description,Price,Genre,IsPhotoExists")] Comics gun, HttpPostedFileBase file)
+        public ActionResult Edit([Bind(Include = "Id,SellerId,Name,Description,Price,Genre,IsPhotoExists")] Comics comics, HttpPostedFileBase file)
         {
             if (ModelState.IsValid)
             {
                 if (file != null && file.ContentLength > 0)
                 {
-                    string fileName = gun.Id + ".png";
+                    string fileName = comics.Id + ".png";
                     string newImage = Path.Combine(Server.MapPath("/Uploads"), fileName);
 
-                    if (gun.IsPhotoExists)
+                    if (comics.IsPhotoExists)
                     {
                         System.IO.File.Delete(newImage);
                     }
                     else
                     {
-                        gun.IsPhotoExists = true;
+                        comics.IsPhotoExists = true;
                     }
 
                     file.SaveAs(newImage);
                 }
 
-                db.Entry(gun).State = EntityState.Modified;
+                db.Entry(comics).State = EntityState.Modified;
                 db.SaveChanges();
 
                 return RedirectToAction("Index");
             }
-            ViewBag.SellerId = new SelectList(db.Sellers, "Id", "FirstName", gun.SellerId);
-            return View(gun);
+            ViewBag.SellerId = new SelectList(db.Sellers, "Id", "FirstName", comics.SellerId);
+            return View(comics);
         }
 
-        // GET: Guns/Delete/5
+        // GET: Comics/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Comics gun = db.Comics.Find(id);
-            if (gun == null)
+            Comics comics = db.Comics.Find(id);
+            if (comics == null)
             {
                 return HttpNotFound();
             }
-            return View(gun);
+            return View(comics);
         }
 
-        // POST: Guns/Delete/5
+        // POST: Comics/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Comics gun = db.Comics.Find(id);
+            Comics comics = db.Comics.Find(id);
 
-            if (gun.IsPhotoExists)
+            if (comics.IsPhotoExists)
             {
-                string fileName = gun.Id + ".png";
+                string fileName = comics.Id + ".png";
                 string delImage = Path.Combine(Server.MapPath("/Uploads"), fileName);
                 System.IO.File.Delete(delImage);
             }
 
-            db.Comics.Remove(gun);
+            db.Comics.Remove(comics);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -159,18 +159,18 @@ namespace GunStore.Controllers
         [AllowAnonymous]
         public ActionResult Search(string gunName, int? minPrice, int? maxPrice, string gener)
         {
-            var gunsQuery = db.Comics.Include(x => x.Reviews);
+            var comicsQuery = db.Comics.Include(x => x.Reviews);
 
             if (!string.IsNullOrEmpty(gunName))
             {
-                gunsQuery = gunsQuery.Where(x => x.Name.Contains(gunName));
+                comicsQuery = comicsQuery.Where(x => x.Name.Contains(gunName));
             }
 
             if (minPrice.HasValue)
             {
                 if (minPrice >= 0)
                 {
-                    gunsQuery = gunsQuery.Where(x => x.Price >= minPrice);
+                    comicsQuery = comicsQuery.Where(x => x.Price >= minPrice);
                 }
             }
 
@@ -178,16 +178,16 @@ namespace GunStore.Controllers
             {
                 if (maxPrice >= 0)
                 {
-                    gunsQuery = gunsQuery.Where(x => x.Price <= maxPrice);
+                    comicsQuery = comicsQuery.Where(x => x.Price <= maxPrice);
                 }
             }
 
             if (!string.IsNullOrEmpty(gener))
             {
-                gunsQuery = gunsQuery.Where(x => x.Genre.Contains(gener));
+                comicsQuery = comicsQuery.Where(x => x.Genre.Contains(gener));
             }
 
-            ViewBag.Guns = gunsQuery.ToList();
+            ViewBag.Comics = comicsQuery.ToList();
 
             return View();
         }
