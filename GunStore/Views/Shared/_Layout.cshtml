@@ -64,9 +64,20 @@
             @RenderBody()
         </div>
         <footer>
-            <h3>&copy; @DateTime.Now.Year - GunStore</h3>
-        </footer>
-    </div>
+            <h3>&copy; @DateTime.Now.Year - ComicBookStore</h3>
+            <nav>
+            <a>@Html.ActionLink("Comics", "Search", "Guns")</a>
+                <a>@Html.ActionLink("Sellers", "Search", "Dealers")</a>
+                @if (Request.IsAuthenticated)
+                {
+                <a>@Html.ActionLink("Manage Comics", "Index", "Guns")</a>
+                <a>@Html.ActionLink("Manage Reviews", "Index", "Reviews")</a>
+                <a>@Html.ActionLink("Manage Sellers", "Index", "Dealers")</a>
+            }
+            <a>@Html.ActionLink("Contact", "Index", "Map")</a>
+        </nav>
+    </footer>
+</div>
 
 </body>
 </html>

@@ -1,6 +1,6 @@
 ﻿@font-face {
-   font-family: customFont;
-   src: url(GoodDog.otf);
+	font-family: customFont;
+	src: url(GoodDog.otf);
 }
 
 header, footer, section, aside, nav, article {
@@ -8,79 +8,79 @@ header, footer, section, aside, nav, article {
 }
 
 html, body {
-    margin:0;
+	margin:0;
 	padding-bottom: 0;
 	height:100%;
-    padding-top: 60px;
-    background: #FEFEFE;
+	padding-top: 60px;
+	background: #FEFEFE;
 }
 
 .navbar-fixed-bottom {
-    -webkit-box-shadow: 0px 2px 5px -1px #888888;
-    -ms-box-shadow: 0px 2px 5px -1px #888888;
-    box-shadow: 0px 2px 5px -1px #888888;
+	-webkit-box-shadow: 0px 2px 5px -1px #888888;
+	-ms-box-shadow: 0px 2px 5px -1px #888888;
+	box-shadow: 0px 2px 5px -1px #888888;
 }
 
 #wrapper {
 	min-height:100%;
-    position: relative;
+	position: relative;
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
-    padding-bottom:300px;
+	padding-bottom:300px;
 }
 
 .line-separator{
-    height:1px;
-    background:#717171;
-    border-bottom:1px solid #313030;
+	height:1px;
+	background:#717171;
+	border-bottom:1px solid #313030;
 }
 
 #filterBox {
-    text-align: left;
+	text-align: left;
 }
 
 #showDealers {
-    text-align: center;
+	text-align: center;
 }
 
 #dealersReliabilityTable {
-    margin-right: auto;
-    margin-left: auto;
+	margin-right: auto;
+	margin-left: auto;
 }
 
 .filtered-dealers {
-    text-align: left;
+	text-align: left;
 }
 
 .dealers-distribution,
 .dealers-filter, 
 .filter {
-    margin-left: -370px;
-    padding: 10px 10px;
+	margin-left: -370px;
+	padding: 10px 10px;
 	width: 330px;
 	background-color: #FAFAFA;
 	-webkit-box-shadow: 0px 1px 5px -1px #888888;
-    -ms-box-shadow: 0px 1px 5px -1px #888888;
-    box-shadow: 0px 1px 5px -1px #888888;
+	-ms-box-shadow: 0px 1px 5px -1px #888888;
+	box-shadow: 0px 1px 5px -1px #888888;
 }
 
 .dealers-distribution,
 .dealers-filter {
-    margin-left: 0;
+	margin-left: 0;
 	width: 100%;
 }
 
 .dealers-distribution {
-    margin-top: 15px;
+	margin-top: 15px;
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
 input,
 select,
 textarea {
-    max-width: 280px;
+	max-width: 280px;
 }
 
 /*------------------------------
@@ -89,54 +89,56 @@ textarea {
 footer {
 	position: absolute;
 	left: 0;
-    bottom: 0;
+	bottom: 0;
 	width: 100%;
 	background: #222;
-    text-align: center;
-    height: 50px;
+	text-align: center;
+	padding-bottom: 20px;
+	padding-top: 100px;
 }
 
-	footer div {
-		display: table;
-		margin: 0 auto;
-		padding: 44px 0;
-		width: 940px;
-		color: #777;
-	}
-	
-		footer div section {
-			display: table-cell;
-			width: 300px;
-		}
-		
-		footer div #about, footer div #blogroll {
-			padding-right: 20px;
-		}
-		
-	footer h3 {
-		color: #FFF;
-		margin :0;
-		margin-top: 13px;
-	}
-	
-	footer a {
-		color: #999;
-	}
-	
-		footer a:hover {
-			color: #FFF;
-			text-decoration: none;
-		}
-	
-	footer ul {
-		margin: 0 0 0 40px;
-		list-style: square;
-		color: #565656;
-	}
-	
-		footer ul li a {
-			display: block;
-		}
+footer div {
+	display: table;
+	margin: 0 auto;
+	padding: 44px 0;
+	width: 940px;
+	color: #777;
+}
+
+footer div section {
+	display: table-cell;
+	width: 300px;
+}
+
+footer div #about, footer div #blogroll {
+	padding-right: 20px;
+}
+
+footer h3 {
+	color: #FFF;
+	margin :0;
+	margin-top: 13px;
+}
+
+footer a {
+	color: #999;
+	padding-right: 20px;
+}
+
+footer a:hover {
+	color: #FFF;
+	text-decoration: none;
+}
+
+footer ul {
+	margin: 0 0 0 40px;
+	list-style: square;
+	color: #565656;
+}
+
+footer ul li a {
+	display: block;
+}
 
 /*------------------------------
 =HEADER
@@ -151,23 +153,23 @@ header h3 {
 ------------------------------*/
 
 input[type=text] {
-    padding:5px;
-    border:2px solid #ccc; 
-    -webkit-border-radius: 5px;
-    border-radius: 5px;
+	padding:5px;
+	border:2px solid #ccc; 
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
 }
 
 input[type=text]:focus {
-    border-color:#333;
+	border-color:#333;
 }
 
 input[type=submit] {
-    padding:5px 15px;
-    background:#ccc;
-    border:0 none;
-    cursor:pointer;
-    -webkit-border-radius: 5px;
-    border-radius: 5px;
+	padding:5px 15px;
+	background:#ccc;
+	border:0 none;
+	cursor:pointer;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
 }
 
 /*------------------------------
@@ -179,70 +181,70 @@ input[type=submit] {
 }
 
 #gun-details {
-    background-color: #FAFAFA;
-    padding: 10px 20px;
-    margin-top: 15px;
-    -webkit-box-shadow: 0px 1px 5px -1px #888888;
-    -ms-box-shadow: 0px 1px 5px -1px #888888;
-    box-shadow: 0px 1px 5px -1px #888888;
+	background-color: #FAFAFA;
+	padding: 10px 20px;
+	margin-top: 15px;
+	-webkit-box-shadow: 0px 1px 5px -1px #888888;
+	-ms-box-shadow: 0px 1px 5px -1px #888888;
+	box-shadow: 0px 1px 5px -1px #888888;
 }
 
 #gun-details img {
-    -webkit-transition: -webkit-transform 2s; /* Safari */
-    transition: transform 2s;
-    height: 100px;
-    width: 200px;
+	-webkit-transition: -webkit-transform 2s; /* Safari */
+	transition: transform 2s;
+	height: 100px;
+	width: 200px;
 }
 
 #gun-details img:hover {
-    transform: scale(2, 2);
+	transform: scale(2, 2);
 }
 
 .comments {
-    margin-left: 60px;
+	margin-left: 60px;
 }
 
 .gun-article {
-    -webkit-column-count: 2; /* Chrome, Safari, Opera */
-    -moz-column-count: 2; /* Firefox */
-    column-count: 2;
-    -webkit-column-rule-style: solid; /* Chrome, Safari, Opera */
-    -moz-column-rule-style: solid; /* Firefox */
-    column-rule-style: solid;
-    -webkit-column-rule-width: 1px; /* Chrome, Safari, Opera */
-    -moz-column-rule-width: 1px; /* Firefox */
-    column-rule-width: 1px;
-    -webkit-column-rule-color: lightblue; /* Chrome, Safari, Opera */
-    -moz-column-rule-color: lightblue; /* Firefox */
-    column-rule-color: lightblue;
-    font-family: customFont;
-    font-size: 20px;
+	-webkit-column-count: 2; /* Chrome, Safari, Opera */
+	-moz-column-count: 2; /* Firefox */
+	column-count: 2;
+	-webkit-column-rule-style: solid; /* Chrome, Safari, Opera */
+	-moz-column-rule-style: solid; /* Firefox */
+	column-rule-style: solid;
+	-webkit-column-rule-width: 1px; /* Chrome, Safari, Opera */
+	-moz-column-rule-width: 1px; /* Firefox */
+	column-rule-width: 1px;
+	-webkit-column-rule-color: lightblue; /* Chrome, Safari, Opera */
+	-moz-column-rule-color: lightblue; /* Firefox */
+	column-rule-color: lightblue;
+	font-family: customFont;
+	font-size: 20px;
 }
 
 .comments .review-number {
-    float: left; 
-    margin-left: -40px; 
-    font-size:22px; 
-    display: block; 
-    color: #959595;
+	float: left; 
+	margin-left: -40px; 
+	font-size:22px; 
+	display: block; 
+	color: #959595;
 }
 
 .comments .review-title {
-    margin-bottom: 0; 
-    margin-top: 8px; 
-    font-weight: bold;
+	margin-bottom: 0; 
+	margin-top: 8px; 
+	font-weight: bold;
 }
 
 .comments .review-auth-details {
-    color: #999999;
+	color: #999999;
 }
 
 .add-comment-header {
-    margin-left: 60px;
+	margin-left: 60px;
 }
 
 #reviewContent {
-    width: 600px;
+	width: 600px;
 	height: 120px;
 	border: 3px solid #cccccc;
 	padding: 5px;
@@ -252,11 +254,11 @@ input[type=submit] {
 }
 
 .header-color {
-    color: #055CA4;
+	color: #055CA4;
 }
 
 .max-width {
-    width: 100%;
+	width: 100%;
 }
 
 /*------------------------------
@@ -264,7 +266,7 @@ input[type=submit] {
 ------------------------------*/
 
 .caution h3 {
-    color: red;
+	color: red;
 }
 
 aside {
@@ -281,13 +283,13 @@ aside {
 	display: table;
 }
 
-	#mainContent {
-		display: table-cell;
-		width: 620px;
-		padding-right: 22px;
-	}
-	
-	aside {
-		display: table-cell;
-		width: 300px;
-	}
+#mainContent {
+	display: table-cell;
+	width: 620px;
+	padding-right: 22px;
+}
+
+aside {
+	display: table-cell;
+	width: 300px;
+}

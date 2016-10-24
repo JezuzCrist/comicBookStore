@@ -1,18 +1,82 @@
 .homepage{
 	
 }
-.homepage h1{
+.homepage h1,.homepage h3{
 	text-align:center;
 }
+.homepage h1{
+	text-shadow: 1px 1px 1px #bfc1c4
+}
+.homepage h5{
+	color: #848484;
+	margin-top: -14px;
+}
 
-.newspaper {
+.brakingNews h3{
+	color: #f96a6a;
+	background-color: #414144;
+	padding: 10px;
+	font-weight: bold;
+}
+.brakingNews header{
+	color:#90908e;
+	text-align:center;
+	padding: 10px;
+	font-size: 20px;
+}
+.movingTextContainer {
+	height: 50px;	
+	overflow: hidden;
+	position: relative;
+}
+.movingTextContainer h5 {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	line-height: 50px;
+	text-align: center;
+	/* Starting position */
+	-moz-transform:translateX(100%);
+	-webkit-transform:translateX(100%);	
+	transform:translateX(100%);
+
+	-moz-animation: movingTextContainer 15s linear infinite;
+	-webkit-animation: movingTextContainer 15s linear infinite;
+	animation: movingTextContainer 15s linear infinite;
+}
+@-moz-keyframes movingTextContainer {
+	0%   { -moz-transform: translateX(100%); }
+	100% { -moz-transform: translateX(-100%); }
+}
+@-webkit-keyframes movingTextContainer {
+	0%   { -webkit-transform: translateX(100%); }
+	100% { -webkit-transform: translateX(-100%); }
+}
+@keyframes movingTextContainer {
+	0%   { 
+		-moz-transform: translateX(100%); /* Firefox bug fix */
+		-webkit-transform: translateX(100%); /* Firefox bug fix */
+		transform: translateX(100%); 		
+	}
+	100% { 
+		-moz-transform: translateX(-100%); /* Firefox bug fix */
+		-webkit-transform: translateX(-100%); /* Firefox bug fix */
+		transform: translateX(-100%); 
+	}
+}
+
+
+video{
+	width:100%;
+}
+.comicDescription {
 	-webkit-column-count: 3; /* Chrome, Safari, Opera */
 	-moz-column-count: 3; /* Firefox */
 	column-count: 3;
 	-webkit-column-gap: 40px; /* Chrome, Safari, Opera */
 	-moz-column-gap: 40px; /* Firefox */
 	column-gap: 40px;
-	-webkit-column-rule: 1px solid lightblue; /* Chrome, Safari, Opera */
-	-moz-column-rule: 1px solid lightblue; /* Firefox */
-	column-rule: 1px solid lightblue;
+	-webkit-column-rule: 1px solid whitesmoke; /* Chrome, Safari, Opera */
+	-moz-column-rule: 1px solid whitesmoke; /* Firefox */
+	column-rule: 1px solid whitesmoke;
 }

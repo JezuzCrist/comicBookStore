@@ -1,6 +1,8 @@
 html, body{
 	margin: 0 0;
 	padding: 0;
+	background: #222 !Important;
+
 }
 .main{
 	position: relative;

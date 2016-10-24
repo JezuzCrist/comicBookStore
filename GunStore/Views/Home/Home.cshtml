@@ -6,36 +6,36 @@ Layout = "~/Views/Shared/_Layout.cshtml";
 
 <div class="homepage">
     <h1>Welcome to the ComicBook Online Shop </h1>
-    <aside>Find the best comics and the best comic stores in the world</aside><br />
-
-    <h4>What is a comic book ? </h4>
-    <div class="newspaper">
-        Comics is a medium used to express ideas by images, often combined with text or other visual information. Comics frequently takes the form of juxtaposed sequences of panels of images. Often textual devices such as speech balloons, captions, and onomatopoeia indicate dialogue, narration, sound effects, or other information. Size and arrangement of panels contribute to narrative pacing. Cartooning and similar forms of illustration are the most common image-making means in comics; fumetti is a form which uses photographic images. Common forms of comics include comic strips, editorial and gag cartoons, and comic books. Since the late 20th century, bound volumes such as graphic novels, comic albums, and tankōbon have become increasingly common, and online webcomics have proliferated in the 21st century.
-    </div>
-
+    <h3>Find the best comics and the best comic stores in the world</h3>
+    <article>
+        <section>
+            <h4>What is a comic book ? </h4>
+            <div class="comicDescription">
+                Comics is a medium used to express ideas by images, often combined with text or other visual information. Comics frequently takes the form of juxtaposed sequences of panels of images. Often textual devices such as speech balloons, captions, and onomatopoeia indicate dialogue, narration, sound effects, or other information. Size and arrangement of panels contribute to narrative pacing. Cartooning and similar forms of illustration are the most common image-making means in comics; fumetti is a form which uses photographic images. Common forms of comics include comic strips, editorial and gag cartoons, and comic books. Since the late 20th century, bound volumes such as graphic novels, comic albums, and tankōbon have become increasingly common, and online webcomics have proliferated in the 21st century.
+            </div>
+        </section>
+    </article>
     <section id="homeMain">
-        <article>
+        <article class="brakingNews">
+            <h3>Braking news in comics</h3>
+            <div class="movingTextContainer">
+                <h5>Doctor strange trailer releced, Wolverine goes hard-R – and re-enacts a scene from comic books, SUPERMAN Takes On BATMAN's Foes In SUPER POWERS #1, Marvel & Panini will launch a series of Foreign language translations of some of its top titles.</h5>
+            </div>
             <section>
-                <img src="~/Content/Guns-Home.jpg" width="800" />
+                <header>Doctor Strange - Official Trailer (2016)</header>
+                <content>
+                    <video controls preload="none"  poster="~/Videos/DRS.jpg" >
+                        <source src="~/Videos/DRS.mp4" type="video/mp4"/>
+                        https://www.youtube.com/watch?v=wwcSki7r9cQ
+                    </video>
+                </content>
             </section>
         </article>
-        <article class="caution">
-            <p>
-                <h3>CAUTION!</h3>
-                Guns are very dangerous, here are some exmaples to be aware from
-            </p>
-            <p>
-                <video controls>
-                    <source src="~/Videos/GunFails.mp4" type="video/mp4" />
-                    Your browser does not support HTML5 video.
-                </video>
-            </p>
-        </article>
     </section>
-    <aside>
+   <!--  <aside>
         <h4>iTunes guns song of the moment:</h4>
         <h5>@Html.DisplayFor(model => model.Name)</h5>
         <h5>@Html.DisplayFor(model => model.ArtistsName)</h5>
         <h5>@Html.DisplayFor(model => model.AlbumName)</h5>
-    </aside>
+    </aside> -->
 </div>
