@@ -40,7 +40,7 @@ namespace GunStore.Controllers
         // GET: Reviews/Create
         public ActionResult Create()
         {
-            ViewBag.GunID = new SelectList(db.Guns, "Id", "Name");
+            ViewBag.GunID = new SelectList(db.Comics, "Id", "Name");
             return View();
         }
 
@@ -58,7 +58,7 @@ namespace GunStore.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.GunID = new SelectList(db.Guns, "Id", "Name", review.ComicsID);
+            ViewBag.GunID = new SelectList(db.Comics, "Id", "Name", review.ComicsID);
             return View(review);
         }
 
@@ -74,7 +74,7 @@ namespace GunStore.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.GunID = new SelectList(db.Guns, "Id", "Name", review.ComicsID);
+            ViewBag.GunID = new SelectList(db.Comics, "Id", "Name", review.ComicsID);
             return View(review);
         }
 
@@ -91,7 +91,7 @@ namespace GunStore.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.GunID = new SelectList(db.Guns, "Id", "Name", review.ComicsID);
+            ViewBag.GunID = new SelectList(db.Comics, "Id", "Name", review.ComicsID);
             return View(review);
         }
 

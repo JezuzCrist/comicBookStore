@@ -13,14 +13,14 @@ using GunStore.Models;
 namespace GunStore.Controllers
 {
     [Authorize]
-    public class DealersController : Controller
+    public class SellersController : Controller
     {
         private ComicsContextDb db = new ComicsContextDb();
 
         // GET: Dealers
         public ActionResult Index()
         {
-            return View(db.Dealers.ToList());
+            return View(db.Sellers.ToList());
         }
 
         // GET: Dealers/Details/5
@@ -30,7 +30,7 @@ namespace GunStore.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Seller dealer = db.Dealers.Find(id);
+            Seller dealer = db.Sellers.Find(id);
             if (dealer == null)
             {
                 return HttpNotFound();
@@ -53,7 +53,7 @@ namespace GunStore.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Dealers.Add(dealer);
+                db.Sellers.Add(dealer);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -68,7 +68,7 @@ namespace GunStore.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Seller dealer = db.Dealers.Find(id);
+            Seller dealer = db.Sellers.Find(id);
             if (dealer == null)
             {
                 return HttpNotFound();
@@ -99,7 +99,7 @@ namespace GunStore.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Seller dealer = db.Dealers.Find(id);
+            Seller dealer = db.Sellers.Find(id);
             if (dealer == null)
             {
                 return HttpNotFound();
@@ -112,8 +112,8 @@ namespace GunStore.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Seller dealer = db.Dealers.Find(id);
-            db.Dealers.Remove(dealer);
+            Seller dealer = db.Sellers.Find(id);
+            db.Sellers.Remove(dealer);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -130,7 +130,7 @@ namespace GunStore.Controllers
         [AllowAnonymous]
         public ActionResult Search(string firstName, string lastName, string city)
         {
-            var dealersFiltered = db.Dealers.Include(x => x.Guns);
+            var dealersFiltered = db.Sellers.Include(x => x.Guns);
 
             if (!string.IsNullOrEmpty(firstName))
             {
@@ -151,7 +151,7 @@ namespace GunStore.Controllers
 
         public string GroupByReliability()
         {
-            var dealers = db.Dealers.GroupBy(dealer => dealer.Reliability,
+            var dealers = db.Sellers.GroupBy(dealer => dealer.Reliability,
                                dealer => dealer.FirstName + " " + dealer.LastName,
                                (key, g) => new {
                                    Reliability = key,

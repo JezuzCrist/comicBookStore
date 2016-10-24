@@ -8,8 +8,8 @@ namespace GunStore.Models
         {
 
         }
-        public DbSet<Seller> Dealers { get; set; }
-        public DbSet<Comics> Guns { get; set; }
+        public DbSet<Seller> Sellers { get; set; }
+        public DbSet<Comics> Comics { get; set; }
         public DbSet<Review> Reviews { get; set; }
     }
 }

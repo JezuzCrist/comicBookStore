@@ -196,8 +196,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\DealersController.cs" />
-    <Compile Include="Controllers\GunsController.cs" />
+    <Compile Include="Controllers\SellersController.cs" />
+    <Compile Include="Controllers\ComicsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MapController.cs" />
     <Compile Include="Controllers\ReviewsController.cs" />
@@ -206,7 +206,7 @@
     </Compile>
     <Compile Include="Models\Seller.cs" />
     <Compile Include="Models\Comics.cs" />
-    <Compile Include="Models\GunsContextDb.cs" />
+    <Compile Include="Models\ComicsContextDb.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -309,13 +309,13 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Dealers\_GunDetails.cshtml" />
-    <Content Include="Views\Dealers\Create.cshtml" />
-    <Content Include="Views\Dealers\Delete.cshtml" />
-    <Content Include="Views\Dealers\Details.cshtml" />
-    <Content Include="Views\Dealers\Edit.cshtml" />
-    <Content Include="Views\Dealers\Index.cshtml" />
-    <Content Include="Views\Dealers\Search.cshtml" />
+    <Content Include="Views\Sellers\_GunDetails.cshtml" />
+    <Content Include="Views\Sellers\Create.cshtml" />
+    <Content Include="Views\Sellers\Delete.cshtml" />
+    <Content Include="Views\Sellers\Details.cshtml" />
+    <Content Include="Views\Sellers\Edit.cshtml" />
+    <Content Include="Views\Sellers\Index.cshtml" />
+    <Content Include="Views\Sellers\Search.cshtml" />
     <Content Include="Views\Comics\Create.cshtml" />
     <Content Include="Views\Comics\Delete.cshtml" />
     <Content Include="Views\Comics\Details.cshtml" />

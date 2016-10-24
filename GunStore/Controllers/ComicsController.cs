@@ -18,7 +18,7 @@ namespace GunStore.Controllers
         // GET: Guns
         public ActionResult Index()
         {
-            var guns = db.Guns.Include(g => g.Seller);
+            var guns = db.Comics.Include(g => g.Seller);
             return View(guns.ToList());
         }
 
@@ -29,7 +29,7 @@ namespace GunStore.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Comics gun = db.Guns.Find(id);
+            Comics gun = db.Comics.Find(id);
             if (gun == null)
             {
                 return HttpNotFound();
@@ -40,7 +40,7 @@ namespace GunStore.Controllers
         // GET: Guns/Create
         public ActionResult Create()
         {
-            ViewBag.SellerId = new SelectList(db.Dealers, "Id", "FirstName");
+            ViewBag.SellerId = new SelectList(db.Sellers, "Id", "FirstName");
             return View();
         }
 
@@ -54,7 +54,7 @@ namespace GunStore.Controllers
             if (ModelState.IsValid)
             {
                 gun.IsPhotoExists = file != null && file.ContentLength > 0;
-                db.Guns.Add(gun);
+                db.Comics.Add(gun);
                 db.SaveChanges();
 
                 if (gun.IsPhotoExists)
@@ -67,7 +67,7 @@ namespace GunStore.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.SellerId = new SelectList(db.Dealers, "Id", "FirstName", gun.SellerId);
+            ViewBag.SellerId = new SelectList(db.Sellers, "Id", "FirstName", gun.SellerId);
             return View(gun);
         }
 
@@ -78,12 +78,12 @@ namespace GunStore.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Comics gun = db.Guns.Find(id);
+            Comics gun = db.Comics.Find(id);
             if (gun == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.SellerId = new SelectList(db.Dealers, "Id", "FirstName", gun.SellerId);
+            ViewBag.SellerId = new SelectList(db.Sellers, "Id", "FirstName", gun.SellerId);
             return View(gun);
         }
 
@@ -118,7 +118,7 @@ namespace GunStore.Controllers
 
                 return RedirectToAction("Index");
             }
-            ViewBag.SellerId = new SelectList(db.Dealers, "Id", "FirstName", gun.SellerId);
+            ViewBag.SellerId = new SelectList(db.Sellers, "Id", "FirstName", gun.SellerId);
             return View(gun);
         }
 
@@ -129,7 +129,7 @@ namespace GunStore.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Comics gun = db.Guns.Find(id);
+            Comics gun = db.Comics.Find(id);
             if (gun == null)
             {
                 return HttpNotFound();
@@ -142,7 +142,7 @@ namespace GunStore.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Comics gun = db.Guns.Find(id);
+            Comics gun = db.Comics.Find(id);
 
             if (gun.IsPhotoExists)
             {
@@ -151,7 +151,7 @@ namespace GunStore.Controllers
                 System.IO.File.Delete(delImage);
             }
 
-            db.Guns.Remove(gun);
+            db.Comics.Remove(gun);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -159,7 +159,7 @@ namespace GunStore.Controllers
         [AllowAnonymous]
         public ActionResult Search(string gunName, int? minPrice, int? maxPrice, string gener)
         {
-            var gunsQuery = db.Guns.Include(x => x.Reviews);
+            var gunsQuery = db.Comics.Include(x => x.Reviews);
 
             if (!string.IsNullOrEmpty(gunName))
             {
