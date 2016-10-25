@@ -1,9 +1,6 @@
 ﻿<h2>MapView</h2>
 <div id="map" style="width:800px; height:500px"></div>
-@section Scripts
-{
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDY_-Sbpc7dEyezG2jx_skos9uTQwGRnx8&callback=initMap"></script>
-}
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB07yxRjqekj1sY46JJ76nNXfe147DQzUw&callback=initMap"></script>
 <script type="text/javascript">
     var map;
     var geocoder;
@@ -16,34 +13,33 @@
 
         $.getJSON('@Url.Action("GetAllSellersAddresses", "Map")')
             .success(function (addresses) {
-                markMapWithSellerAddresses(addresses);
+                $.getJSON('@Url.Action("GetAllSellersNames", "Map")')
+                    .success(function (names) {
+                        markMapWithSellers(addresses,names);
+                });
             });
-    }
 
-    initMap();
-
-    function addMarker(location, map) {
+    function addMarker(location, map,lable) {
         var marker = new google.maps.Marker({
             position: location,
-            label: 'D',
+            label: lable,
             map: map
         });
     }
 
-    function geocodeAddress(geocoder, map, address) {
+    function geocodeAddress(geocoder, map, address,name) {
         geocoder.geocode({ 'address': address }, function (results, status) {
             if (status === google.maps.GeocoderStatus.OK) {
-                addMarker(results[0].geometry.location, map);
+                addMarker(results[0].geometry.location, map,name);
             } else {
                 console.log('Geocode was not successful for the following reason: ' + status);
             }
         });
     }
-
-    function markMapWithSellerAddresses(addresses) {
+    function markMapWithSellers(addresses,names) {
         for (var i = 0; i < addresses.length; i++) {
             var address = addresses[i];
-            geocodeAddress(geocoder, map, address);
+            geocodeAddress(geocoder, map, address,names[i]);
         }
     }
 

@@ -32,5 +32,21 @@ namespace ComicBookStore.Controllers
         {
             return seller.City + ", " + seller.Street;
         }
+
+        public string GetAllSellersNames()
+        {
+            List<string> names = new List<string>();
+            using (ComicsContextDb db = new ComicsContextDb())
+            {
+                db.Sellers.ForEach(seller => names.Add(ReformatSellerName(seller)));
+            }
+
+            return JsonConvert.SerializeObject(names);
+        }
+
+        private static string ReformatSellerName(Seller seller)
+        {
+            return seller.FirstName + " " + seller.LastName;
+        }
     }
 }
