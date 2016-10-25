@@ -8,9 +8,9 @@ using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using Newtonsoft.Json;
-using GunStore.Models;
+using ComicBookStore.Models;
 
-namespace GunStore.Controllers
+namespace ComicBookStore.Controllers
 {
     [Authorize]
     public class SellersController : Controller

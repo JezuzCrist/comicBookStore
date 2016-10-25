@@ -1,4 +1,4 @@
-﻿@model GunStore.Models.Review
+﻿@model ComicBookStore.Models.Review
 @{
     ViewBag.Title = "Search";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -105,7 +105,7 @@
                 <table>
                     @for (int l_iRevIndex = 0; l_iRevIndex < comics.Reviews.Count; l_iRevIndex++)
                     {
-                        GunStore.Models.Review currReview = comics.Reviews[l_iRevIndex];
+                        ComicBookStore.Models.Review currReview = comics.Reviews[l_iRevIndex];
                         <tr>
                             <th>
                                 <div class="review-number">@(l_iRevIndex + 1)</div>

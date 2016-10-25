@@ -4,10 +4,10 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Newtonsoft.Json;
-using GunStore.Models;
+using ComicBookStore.Models;
 using WebGrease.Css.Extensions;
 
-namespace GunStore.Controllers
+namespace ComicBookStore.Controllers
 {
     public class MapController : Controller
     {

@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace GunStore.Models
+namespace ComicBookStore.Models
 {
     public class Seller
     {

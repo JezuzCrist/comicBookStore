@@ -5,9 +5,9 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
-using GunStore.Models;
+using ComicBookStore.Models;
 
-namespace GunStore
+namespace ComicBookStore
 {
     public partial class Startup
     {

@@ -1,6 +1,6 @@
 ﻿using System.Data.Entity;
 
-namespace GunStore.Models
+namespace ComicBookStore.Models
 {
     public class ComicsContextDb : DbContext
     {

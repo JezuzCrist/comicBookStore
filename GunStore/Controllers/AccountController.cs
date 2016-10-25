@@ -6,11 +6,11 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using GunStore.Models;
+using ComicBookStore.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 
-namespace GunStore.Controllers
+namespace ComicBookStore.Controllers
 {
     [Authorize]
     public class AccountController : Controller

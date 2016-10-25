@@ -6,7 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using Newtonsoft.Json.Linq;
 
-namespace GunStore.Controllers
+namespace ComicBookStore.Controllers
 {
     public class Song
     {

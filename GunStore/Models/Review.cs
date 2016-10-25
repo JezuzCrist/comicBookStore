@@ -5,7 +5,7 @@ using System.Web;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace GunStore.Models
+namespace ComicBookStore.Models
 {
     public class Review
     {

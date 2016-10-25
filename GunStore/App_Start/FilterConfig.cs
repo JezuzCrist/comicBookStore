@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 
-namespace GunStore
+namespace ComicBookStore
 {
     public class FilterConfig
     {
