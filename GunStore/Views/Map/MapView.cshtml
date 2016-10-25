@@ -14,9 +14,9 @@
         });
         geocoder = new google.maps.Geocoder();
 
-        $.getJSON('@Url.Action("GetAllDealersAddresses", "Map")')
+        $.getJSON('@Url.Action("GetAllSellersAddresses", "Map")')
             .success(function (addresses) {
-                markMapWithDealerAddresses(addresses);
+                markMapWithSellerAddresses(addresses);
             });
     }
 
@@ -40,7 +40,7 @@
         });
     }
 
-    function markMapWithDealerAddresses(addresses) {
+    function markMapWithSellerAddresses(addresses) {
         for (var i = 0; i < addresses.length; i++) {
             var address = addresses[i];
             geocodeAddress(geocoder, map, address);

@@ -17,103 +17,103 @@ namespace ComicBookStore.Controllers
     {
         private ComicsContextDb db = new ComicsContextDb();
 
-        // GET: Dealers
+        // GET: Sellers
         public ActionResult Index()
         {
             return View(db.Sellers.ToList());
         }
 
-        // GET: Dealers/Details/5
+        // GET: Sellers/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Seller dealer = db.Sellers.Find(id);
-            if (dealer == null)
+            Seller seller = db.Sellers.Find(id);
+            if (seller == null)
             {
                 return HttpNotFound();
             }
-            return View(dealer);
+            return View(seller);
         }
 
-        // GET: Dealers/Create
+        // GET: Sellers/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Dealers/Create
+        // POST: Sellers/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,FirstName,LastName,City,Street,Reliability")] Seller dealer)
+        public ActionResult Create([Bind(Include = "Id,FirstName,LastName,City,Street,Reliability")] Seller seller)
         {
             if (ModelState.IsValid)
             {
-                db.Sellers.Add(dealer);
+                db.Sellers.Add(seller);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(dealer);
+            return View(seller);
         }
 
-        // GET: Dealers/Edit/5
+        // GET: Sellers/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Seller dealer = db.Sellers.Find(id);
-            if (dealer == null)
+            Seller seller = db.Sellers.Find(id);
+            if (seller == null)
             {
                 return HttpNotFound();
             }
-            return View(dealer);
+            return View(seller);
         }
 
-        // POST: Dealers/Edit/5
+        // POST: Sellers/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,City,Street,Reliability")] Seller dealer)
+        public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,City,Street,Reliability")] Seller seller)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(dealer).State = EntityState.Modified;
+                db.Entry(seller).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(dealer);
+            return View(seller);
         }
 
-        // GET: Dealers/Delete/5
+        // GET: Sellers/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Seller dealer = db.Sellers.Find(id);
-            if (dealer == null)
+            Seller seller = db.Sellers.Find(id);
+            if (seller == null)
             {
                 return HttpNotFound();
             }
-            return View(dealer);
+            return View(seller);
         }
 
-        // POST: Dealers/Delete/5
+        // POST: Sellers/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Seller dealer = db.Sellers.Find(id);
-            db.Sellers.Remove(dealer);
+            Seller seller = db.Sellers.Find(id);
+            db.Sellers.Remove(seller);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -130,39 +130,39 @@ namespace ComicBookStore.Controllers
         [AllowAnonymous]
         public ActionResult Search(string firstName, string lastName, string city)
         {
-            var dealersFiltered = db.Sellers.Include(x => x.Guns);
+            var sellersFiltered = db.Sellers.Include(x => x.Guns);
 
             if (!string.IsNullOrEmpty(firstName))
             {
-                dealersFiltered = dealersFiltered.Where(x => x.FirstName.Contains(firstName));
+                sellersFiltered = sellersFiltered.Where(x => x.FirstName.Contains(firstName));
             }
 
             if (!string.IsNullOrEmpty(lastName))
             {
-                dealersFiltered = dealersFiltered.Where(x => x.LastName.Contains(lastName));
+                sellersFiltered = sellersFiltered.Where(x => x.LastName.Contains(lastName));
             }
 
             if (!string.IsNullOrEmpty(city))
             {
-                dealersFiltered = dealersFiltered.Where(x => x.City.Contains(city));
+                sellersFiltered = sellersFiltered.Where(x => x.City.Contains(city));
             }
-            return View(dealersFiltered.ToList());
+            return View(sellersFiltered.ToList());
         }
 
         public string GroupByReliability()
         {
-            var dealers = db.Sellers.GroupBy(dealer => dealer.Reliability,
-                               dealer => dealer.FirstName + " " + dealer.LastName,
+            var sellers = db.Sellers.GroupBy(seller => seller.Reliability,
+                               seller => seller.FirstName + " " + seller.LastName,
                                (key, g) => new {
                                    Reliability = key,
-                                   Dealers = g.ToList()
+                                   Sellers = g.ToList()
                                }
                               ).ToList();
 
-            var resultDealers = new List<GroupByObject>();
-            dealers.ForEach(d => resultDealers.Add(new GroupByObject(d.Reliability, Concat(d.Dealers))));
+            var resultSellers = new List<GroupByObject>();
+            sellers.ForEach(d => resultSellers.Add(new GroupByObject(d.Reliability, Concat(d.Sellers))));
 
-            return JsonConvert.SerializeObject(resultDealers);
+            return JsonConvert.SerializeObject(resultSellers);
         }
 
         private static string Concat(IEnumerable<string> source)
@@ -186,12 +186,12 @@ namespace ComicBookStore.Controllers
             [JsonProperty]
             private int Reliability { get; set; }
             [JsonProperty]
-            private string Dealers { get; set; }
+            private string Sellers { get; set; }
 
-            public GroupByObject(int reliability, string dealers)
+            public GroupByObject(int reliability, string sellers)
             {
                 Reliability = reliability;
-                Dealers = dealers;
+                Sellers = sellers;
             }
         }
     }

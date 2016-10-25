@@ -17,20 +17,20 @@ namespace ComicBookStore.Controllers
             return View("MapView");
         }
 
-        public string GetAllDealersAddresses()
+        public string GetAllSellersAddresses()
         {
             List<string> addresses = new List<string>();
             using (ComicsContextDb db = new ComicsContextDb())
             {
-                db.Sellers.ForEach(dealer => addresses.Add(ReformatDealerAddress(dealer)));
+                db.Sellers.ForEach(seller => addresses.Add(ReformatSellerAddress(seller)));
             }
 
             return JsonConvert.SerializeObject(addresses);
         }
 
-        private static string ReformatDealerAddress(Seller dealer)
+        private static string ReformatSellerAddress(Seller seller)
         {
-            return dealer.City + ", " + dealer.Street;
+            return seller.City + ", " + seller.Street;
         }
     }
 }
