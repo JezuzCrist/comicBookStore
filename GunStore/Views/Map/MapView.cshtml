@@ -15,32 +15,32 @@
             .success(function (addresses) {
                 $.getJSON('@Url.Action("GetAllSellersNames", "Map")')
                     .success(function (names) {
-                        markMapWithSellers(addresses,names);
-                });
+                        markMapWithSellers(addresses, names);
+                    });
             });
 
-    function addMarker(location, map,lable) {
-        var marker = new google.maps.Marker({
-            position: location,
-            label: lable,
-            map: map
-        });
-    }
+        function addMarker(location, map, lable) {
+            var marker = new google.maps.Marker({
+                position: location,
+                label: lable,
+                map: map
+            });
+        }
 
-    function geocodeAddress(geocoder, map, address,name) {
-        geocoder.geocode({ 'address': address }, function (results, status) {
-            if (status === google.maps.GeocoderStatus.OK) {
-                addMarker(results[0].geometry.location, map,name);
-            } else {
-                console.log('Geocode was not successful for the following reason: ' + status);
+        function geocodeAddress(geocoder, map, address, name) {
+            geocoder.geocode({ 'address': address }, function (results, status) {
+                if (status === google.maps.GeocoderStatus.OK) {
+                    addMarker(results[0].geometry.location, map, name);
+                } else {
+                    console.log('Geocode was not successful for the following reason: ' + status);
+                }
+            });
+        }
+        function markMapWithSellers(addresses, names) {
+            for (var i = 0; i < addresses.length; i++) {
+                var address = addresses[i];
+                geocodeAddress(geocoder, map, address, names[i]);
             }
-        });
-    }
-    function markMapWithSellers(addresses,names) {
-        for (var i = 0; i < addresses.length; i++) {
-            var address = addresses[i];
-            geocodeAddress(geocoder, map, address,names[i]);
         }
     }
-
 </script>
