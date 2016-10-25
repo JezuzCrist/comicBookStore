@@ -1,4 +1,4 @@
-﻿@model IEnumerable<GunStore.Models.Gun>
+﻿@model IEnumerable<GunStore.Models.Comics>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -10,7 +10,7 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Dealer.FirstName)
+            @Html.DisplayNameFor(model => model.Seller.FirstName)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Name)
@@ -33,7 +33,7 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Dealer.FirstName)
+                @Html.DisplayFor(modelItem => item.Seller.FirstName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Name)

@@ -157,13 +157,13 @@ namespace GunStore.Controllers
         }
 
         [AllowAnonymous]
-        public ActionResult Search(string gunName, int? minPrice, int? maxPrice, string gener)
+        public ActionResult Search(string comicsName, int? minPrice, int? maxPrice, string gener)
         {
             var comicsQuery = db.Comics.Include(x => x.Reviews);
 
-            if (!string.IsNullOrEmpty(gunName))
+            if (!string.IsNullOrEmpty(comicsName))
             {
-                comicsQuery = comicsQuery.Where(x => x.Name.Contains(gunName));
+                comicsQuery = comicsQuery.Where(x => x.Name.Contains(comicsName));
             }
 
             if (minPrice.HasValue)
@@ -193,17 +193,17 @@ namespace GunStore.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddReview(Review.Rank GunRank, string reviewTitle, string reviewAuthor, string reviewContent, string gunId)
+        public ActionResult AddReview(Review.Rank ComicsRank, string reviewTitle, string reviewAuthor, string reviewContent, string comicsId)
         {
             try
             {
                 Review newReview = new Review
                 {
-                    ComicsRank = GunRank,
+                    ComicsRank = ComicsRank,
                     Title = reviewTitle,
                     Author = reviewAuthor,
                     Content = reviewContent,
-                    ComicsID = int.Parse(gunId),
+                    ComicsID = int.Parse(comicsId),
                     PublicityDate = DateTime.Now
                 };
 
